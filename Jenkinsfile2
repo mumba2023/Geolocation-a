@@ -1,22 +1,24 @@
-pipeline{
-    agent any 
-    tools{
+pipeline {
+    agent any
+    tools {
         maven 'M2_HOME'
     }
-    stages{
-        stage('SonarQube scan'){
-            steps{
-                withsonarQubeEnv('sonarserver'){
-                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
-              
-              }
+    stages {
+        stage('SonarQube scan') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonarserver') {
+                        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
+                    }
+                }
             }
         }
-        stage('maven commands'){
-            steps{
-                sh 'mvn clean test compile install package'
+        stage('Maven commands') {
+            steps {
+                script {
+                    sh 'mvn clean test compile install package'
+                }
             }
         }
     }
-
 }
