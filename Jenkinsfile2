@@ -1,15 +1,6 @@
 pipeline {
     agent any  
     stages {
-        stage('SonarQube scan') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonarserver') {
-                        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a -Dsonar.organization=my-organization -Dsonar.login=$SONAR_TOKEN'
-                    }
-                }
-            }
-        }
         stage('Maven commands') {
             steps {
                 script {
