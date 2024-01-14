@@ -1,35 +1,35 @@
 pipeline {
     agent any
-     tools{
+    
+    tools {
         maven 'M2_HOME'
-     }
-
-    stages{
-        stage('sonarqube scan'){
-            steps{
-                withSonarQubeEnv('sonarserver'){
-                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
-            }
-            }
-        }
     }
-}
-      
+
     stages {
-        stage('Maven commands') {
+        stage('Maven Build') {
             steps {
                 script {
                     sh 'mvn clean test compile install package'
                 }
             }
-            stage('upload artifact'){
-                steps{
-                  sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
-                  target/bio*.jar \
-                  "http://34.200.233.246:8081/artifactory/geoapp/"'  
+        }
+
+        stage('SonarQube Scan') {
+            steps {
+                withSonarQubeEnv('sonarserver') {
+                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
+                }
+            }
+        }
+
+        stage('Upload Artifact') {
+            steps {
+                script {
+                    sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
+                    target/bio*.jar \
+                    "http://34.200.233.246:8081/artifactory/geoapp/"'
                 }
             }
         }
     }
-
-
+}
