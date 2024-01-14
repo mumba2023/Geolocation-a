@@ -11,11 +11,9 @@ pipeline {
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
             }
             }
-
         }
     }
-   
-    }  
+      
     stages {
         stage('Maven commands') {
             steps {
@@ -25,4 +23,5 @@ pipeline {
             }
         }
     }
+}
 
