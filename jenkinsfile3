@@ -3,7 +3,7 @@ pipeline{
       label 'ansible'  
     }
     stages{
-        stage(check current dir){
+        stage('check current dir'){
             steps{
                 sh 'pwd'
                 sh 'whoami'
