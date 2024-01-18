@@ -1,0 +1,14 @@
+pipeline{
+    agent{
+      label 'ansible'  
+    }
+    stages{
+        stage(check current dir){
+            steps{
+                sh 'pwd'
+                sh 'whoami'
+                sh 'mkdir charles'
+            }
+        }
+    }
+}
