@@ -8,6 +8,7 @@ pipeline{
                 sh 'pwd'
                 sh 'whoami'
                 sh 'mkdir charles'
+                sh 'uname -r'
             }
         }
     }
