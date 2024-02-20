@@ -27,7 +27,7 @@ pipeline {
                 script {
                     sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
                     target/bio*.jar \
-                    "http://34.200.233.246:8081/artifactory/geoapp/"'
+                    "http://44.211.59.177:8081/artifactory/geoapp/"'
                 }
             }
         }
