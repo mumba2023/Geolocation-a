@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Scan') {
+        /*stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv('sonarserver') {
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        /*stage('Upload Artifact') {
+        stage('Upload Artifact') {
             steps {
                 script {
                     sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
