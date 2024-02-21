@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Upload Artifact') {
+        /*stage('Upload Artifact') {
             steps {
                 script {
                     sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
@@ -30,7 +30,7 @@ pipeline {
                     "http://44.211.59.177:8081/artifactory/geoapp/"'
                 }
             }
-        }
+        }*/
         stage('image build'){
             steps{
                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 178460163237.dkr.ecr.us-east-1.amazonaws.com'
