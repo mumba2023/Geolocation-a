@@ -20,17 +20,17 @@ pipeline {
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=mumba2023_Geolocation-a'
                 }
             }
-        }
+        }*/
 
         stage('Upload Artifact') {
             steps {
                 script {
                     sh 'curl -uadmin:APABaX6xkfB49JvoryWi7xNgcEy -T \
                     target/bio*.jar \
-                    "http://44.211.59.177:8081/artifactory/geoapp/"'
+                    "http://http://44.200.254.62:8081/artifactory/geoapp/"'
                 }
             }
-        }*/
+        }
         stage('image build'){
             steps{
                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 178460163237.dkr.ecr.us-east-1.amazonaws.com'
